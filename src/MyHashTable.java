@@ -112,4 +112,20 @@ public class MyHashTable <K, V>{
         }
         return null;
     }
+    public V remove(K key){
+        int index = getIndex(key);
+        int hash = hash(key);
+        HashNode<K, V> head = chainArray.get(index);
+        HashNode<K, V> prev = null;
+        while(head != null){
+            if (head.key.equals(key) && hash == head.hashCode) break;
+            prev = head;
+            head = head.next;
+        }
+        if (head == null) return null;
+        size--;
+        if(prev != null) prev.next = head.next;
+        else chainArray.set(index, head.next);
+        return head.val;
+    }
 
