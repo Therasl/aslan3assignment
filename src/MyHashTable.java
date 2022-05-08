@@ -100,4 +100,16 @@ public class MyHashTable <K, V>{
             System.out.println();
         }
     }
+    public V get(K key){
+        int index = getIndex(key);
+        int hash = hash(key);
+        HashNode<K, V> head = chainArray.get(index);
+        while(head != null){
+            if (head.key.equals(key) && !(head.hashCode != hash)){
+                return head.val;
+            }
+            head = head.next;
+        }
+        return null;
+    }
 
