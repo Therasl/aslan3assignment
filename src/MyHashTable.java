@@ -142,4 +142,11 @@ public class MyHashTable <K, V>{
         }
         return false;
     }
+    public K getKey(V val){
+        return null;
+    }
 
+    public int size(){
+        return size;
+    }
+}
