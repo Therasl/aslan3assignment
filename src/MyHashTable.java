@@ -21,17 +21,25 @@ public class MyHashTable <K, V>{
         }
     }
 
-    private ArrayList<HashNode<K,V>> chainArray = new ArrayList<>();
+    private ArrayList<HashNode<K,V>> chainArray;
     private int M = 11;
-    private int size = 0;
+    private int size;
 
     public MyHashTable() {
-        for (int i = 0; i < M; i++) chainArray.add(null);
+        chainArray = new ArrayList<>();
+        size = 0;
+        for (int i = 0; i < M; i++){
+            chainArray.add(null);
+        }
     }
 
     public MyHashTable(int M) {
+        chainArray = new ArrayList<>();
         this.M = M;
-        for (int i = 0; i < M; i++) chainArray.add(null);
+        size = 0;
+        for (int i = 0; i < M; i++){
+            chainArray.add(null);
+        }
     }
 
     private int hash(K key){
@@ -41,9 +49,7 @@ public class MyHashTable <K, V>{
     private int getIndex(K key){
         int hash = hash(key);
         int index = hash % M;
-        if (index < 0) {
-            index *= -1;
-        }
+        if (index < 0) index *= -1;
         return index;
     }
 
@@ -145,7 +151,6 @@ public class MyHashTable <K, V>{
     public K getKey(V val){
         return null;
     }
-
     public int size(){
         return size;
     }
